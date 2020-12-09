@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Switch } from 'react-router-dom';
+import Login from './pages/auth/login/Login';
+import LoginPanel from './pages/auth/login/LoginPanel';
+import Signup from './pages/auth/signup/Signup';
+import SignupPanel from './pages/auth/signup/SignupPanel';
+import AuthTemplate from './templates/auth/AuthTemplate';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+	return (
+		<Switch>
+			<AuthTemplate
+				exact
+				path="/login"
+				Component={Login}
+				SidePanel={LoginPanel}
+				mode="sign-in-mode"
+			/>
+			<AuthTemplate
+				exact
+				path="/signup"
+				Component={Signup}
+				SidePanel={SignupPanel}
+				mode="sign-up-mode"
+			/>
+		</Switch>
+	);
 }
-
-export default App;
